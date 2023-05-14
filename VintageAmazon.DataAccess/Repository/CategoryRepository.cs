@@ -10,21 +10,21 @@ namespace VintageAmazon.DataAccess.Repository
 {
     public class CategoryRepository : Repository<Category>, ICategoryRepository
     {
-        private ApplicationDbContext _db;
+        private ApplicationDbContext _dbb;
 
         public CategoryRepository(ApplicationDbContext db) : base(db) 
         {
-            _db = db;
-        }
-
-        public void Save()
-        {
-            _db.SaveChanges();
+            _dbb = db;
         }
 
         public void Update(Category obj)
         {
-            _db.Categories.Update(obj);
+            _dbb.Categories.Update(obj);
         }
+        public IEnumerable<Category> OrderBy(Func<Category, string> keySelector)
+        {
+            return _dbb.Categories.OrderBy(keySelector);
+        }
+
     }
 }

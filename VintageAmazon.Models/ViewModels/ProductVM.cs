@@ -14,6 +14,9 @@ namespace VintageAmazon.Models.ViewModels
     {
         
         public Product Product { get; set; }
+        //public IEnumerable<Comment> Comment { get; set; }
+        [ValidateNever]
+        public IEnumerable<SelectListItem> ProductList { get; set; }
         [ValidateNever]
         public IEnumerable<SelectListItem> CategoryList { get; set; }
         [ValidateNever]

@@ -10,5 +10,7 @@ namespace VintageAmazon.DataAccess.Repository.IRepository
     public interface ICategoryRepository : IRepository<Category>
     {
         void Update(Category obj);
+        IEnumerable<Category> OrderBy(Func<Category, string> keySelector);
+
     }
 }

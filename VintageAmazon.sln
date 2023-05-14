@@ -5,11 +5,11 @@ VisualStudioVersion = 17.5.33414.496
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VintageAmazonWeb", "VintageAmazonWeb\VintageAmazonWeb.csproj", "{9ECD056A-B657-49D6-B9CD-D4006EC04123}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VintageAmazon.DataAccess", "VintageAmazon.DataAccess\VintageAmazon.DataAccess.csproj", "{2757F7E8-96A4-4DB0-95F5-5DC5FF6B1BF2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VintageAmazon.DataAccess", "VintageAmazon.DataAccess\VintageAmazon.DataAccess.csproj", "{2757F7E8-96A4-4DB0-95F5-5DC5FF6B1BF2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VintageAmazon.Models", "VintageAmazon.Models\VintageAmazon.Models.csproj", "{01476722-2D11-4AAC-A78A-F1301BED49EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VintageAmazon.Models", "VintageAmazon.Models\VintageAmazon.Models.csproj", "{01476722-2D11-4AAC-A78A-F1301BED49EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VintageAmazon.Utility", "VintageAmazon.Utility\VintageAmazon.Utility.csproj", "{F8C11A31-70ED-400D-8583-42DE841D144B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VintageAmazon.Utility", "VintageAmazon.Utility\VintageAmazon.Utility.csproj", "{F8C11A31-70ED-400D-8583-42DE841D144B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

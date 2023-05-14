@@ -15,6 +15,13 @@ namespace VintageAmazon.Models
         [Required]
         public string Title { get; set; }
         public string Description { get; set; }
+
+        [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\S]*$")]
+        [StringLength(5)]
+        [ValidateNever]
+        public string? Rating { get; set; }
+        [Required]
+        public int Quantity { get; set; }
         [Required]
         public string ISBN { get; set; }
         [Required]
@@ -52,5 +59,37 @@ namespace VintageAmazon.Models
         [ValidateNever]
 
         public CoverType CoverType { get; set; }
+
+        public int RateCount
+        {
+            get
+            {
+                if (ratings != null)
+                {
+                    return ratings.Count;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+        public int RateTotal
+        {
+            get
+            {
+                if(ratings != null)
+                {
+                    return (ratings.Sum(m => m.Rate));
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
+        [ValidateNever]
+        public virtual ICollection<StarRating> ratings { get; set; }
     }
 }

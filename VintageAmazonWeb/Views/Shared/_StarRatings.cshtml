@@ -1,0 +1,79 @@
+﻿@model VintageAmazon.Models.Product
+
+<div class="star-ratings">
+    <div class="rating">
+        @for (int i = 1; i <= 5; i++)
+        {
+            if (i <= int.Parse(Model.Rating))
+            {
+                <span class="fa fa-star checked"></span>
+            }
+            else
+            {
+                <span class="fa fa-star"></span>
+            }
+        }
+    </div>
+    <div class="rating-num">
+        (@Model.RateCount)
+    </div>
+</div>
+@*@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+            <br />
+            <img src="~/images/StarFade.png" alt="Star Rating" align="middle" id="1" class="rating" itemid="@item.Id" />
+            <img src="~/images/StarFade.png" alt="Star Rating" align="middle" id="2" class="rating" itemid="@item.Id" />
+            <img src="~/images/StarFade.png" alt="Star Rating" align="middle" id="3" class="rating" itemid="@item.Id" />
+            <img src="~/images/StarFade.png" alt="Star Rating" align="middle" id="4" class="rating" itemid="@item.Id" />
+            <img src="~/images/StarFade.png" alt="Star Rating" align="middle" id="5" class="rating" itemid="@item.Id" />
+            (@item.RateCount)
+            @{
+                if (item.RateCount > 0)
+                {
+                    decimal a = @item.RateTotal / item.RateCount;
+                    <span class="avr">@a</span>
+                }
+            }
+            <br />
+        </td>
+    </tr>
+}*@
+
+
+<script type="text/javascript">
+    $(function () {
+        $("img.rating").mousepver(function(){
+            giveRating($(this), "StarGlow.png");
+            $(this).css("cursor", "pointer");
+        });
+
+        $("img.rating").mouseout(function(){
+            giveRating($(this), "StarFade.png");
+            refilRating($(this));
+        });
+
+        $("img.rating").click(function(e){
+            $(this).css('color', 'red');
+            var url = "/Product/Home/PostRating?rating=" + parseInt($(this).attr("id") + "&mid=" + parseInt($(this).attr("mid"));
+            $.post(url, null, function(data){
+                $(e.currentTarget).closest('tr').find('div.result').text(data).css('color','red')
+            });
+        });
+    });
+
+    function giveRating(img, image){
+        img.attr("src", "/Images/" + image).prevAll("img.rating").attr("src", "/Images/" + image);
+    }
+
+    function refilRating(img1){
+        var rt = $(img1).closest('tr').find("span.avr").text();
+        var img = $(img1).closest('tr').find("img[id='" + parseInt(rt) + "']");
+        img.attr("src", "/images/StarGlow.png").prevAll("img.rating").attr("src", "/images/StarGlow.png");
+    }
+</script>

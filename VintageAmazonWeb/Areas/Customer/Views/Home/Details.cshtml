@@ -1,11 +1,13 @@
 ﻿@model ShoppingCart
 
+
+
 <form method="post">
     <input hidden asp-for="ProductId" />
     <div class="card  container pt-4">
         <div class="card-header bg-primary text-light ml-0  row ">
             <div class="col-12 col-md-6">
-                <h1 class="text-white-50">@Model.Product.Title</h1>
+                <h1 class="text-white-70">@Model.Product.Title</h1>
                 <p class="text-warning">by @Model.Product.Author</p>
             </div>
             <div class="col-12 col-md-6 text-end pt-4">
@@ -72,9 +74,139 @@
                     <a class="btn btn-success form-control " style="height:50px;" asp-action="Index">Back to Home</a>
                 </div>
                 <div class="col-12 col-md-6 pb-1">
-                    <button type="submit" value="Add to Cart" class="btn btn-primary form-control" style="height:50px;">Add to Cart</button>
+                    @if (Model.Product.Quantity > 0)
+                    {
+                        <button type="submit" value="Add to Cart" class="btn btn-primary form-control" style="height:50px;">Add to Cart</button>
+                    }
+                    else
+                    {
+                        <button type="submit" value="Add to Cart" class="btn btn-danger form-control" style="height:50px;" disabled>Sold Out!</button>
+                    }
+                    </div>
                 </div>
             </div>
         </div>
+    </form>
+    <div class="card">
+        <div class="card-header">
+            <h3>Reviews</h3>
+        </div>
+        @*    @Html.Partial("_StarRatings", Model.Product)
+    *@    @*    <partial name="_StarRatings" />
+    *@
+        @*    @using (Html.BeginForm("AddReview"))
+    {
+    <fieldset>
+    <legend>Rate and review this product:</legend>
+    <div class="form-group">
+    <label for="rating">Rating:</label>
+    <div class="rating">
+    @for (int i = 1; i <= 5; i++)
+    {
+    <i class="fa fa-star" id="star-@i" onclick="setRating(@i)"></i>
+    }
+    <input type="hidden" name="rating" id="rating" value="0" />
     </div>
-</form>
+    </div>
+    <div class="form-group">
+    <label for="comment">Comment:</label>
+    @Html.TextAreaFor(model => model.Comments, new { @class = "form-control", rows = 5 })
+    *@
+    </div>
+    <button type="submit" class="btn btn-primary">Submit Review</button>
+            </fieldset>
+
+    </div>
+
+    <script>
+        function setRating(rating) {
+            document.getElementById("rating").value = rating;
+            for (var i = 1; i <= 5; i++) {
+                var star = document.getElementById("star-" + i);
+                if (i <= rating) {
+                    star.classList.add("checked");
+                } else {
+                    star.classList.remove("checked");
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .rating i {
+            color: #ddd;
+            font-size: 30px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+            .rating i.checked {
+                color: gold;
+            }
+    </style>
+
+
+    @*    <ul class="list-group list-group-flush">
+        @if (Model.Comments != null)
+        {
+            @foreach (var comment in Model.Comments)
+            {
+                <li class="list-group-item">
+                    @comment.Text
+                    <br />
+                    <small class="text-muted">Posted By @comment.ApplicationUser.UserName on @comment.TimeStamp.ToString("M/d/yyyy")</small>
+                </li>
+            }
+        }
+        else
+        {
+            <li>
+                <div class="list-group-item">
+                    <p><strong>Be the first to leave a review!</strong></p>
+                </div>
+            </li>
+        }
+
+    </ul>
+    <div class="card-footer">
+        <form asp-action="LeaveComment">
+            <div class="form-group pt-3">
+                <label for="exampleFormControlTextarea1">Write your review:</label>
+                <textarea class="form-control bg-white" rows="2" name="comment" placeholder="Write your comment here...."></textarea>
+                <input type="hidden" asp-for="Product.Id" />
+            </div>
+            <div class="col-md-4 pb-1 pt-3 d-flex">
+                <button class="btn btn-primary form-control" style="height:50px;">Leave A Review</button>
+            </div>
+
+        </form>
+    </div>
+
+
+<ul>
+    @if (Model.Comments != null)
+    {
+        @foreach (var review in Model.Comments)
+        {
+            <li>
+                <div class="row">
+                    <div class="col-md-2">
+                        <strong>@review.ApplicationUser.Name</strong>
+                        <br />
+                        @Html.Partial("_StarRatings", review.Rating)
+                    </div>
+                    <div class="col-md-10">
+                        <p>@review.Text</p>
+                        <small>@review.TimeStamp</small>
+                    </div>
+                </div>
+            </li>
+        }
+
+    }
+
+
+</ul>
+
+
+*@

@@ -21,10 +21,12 @@ namespace VintageAmazon.Models
         public int Count { get; set; }
 
         public string ApplicationUserId { get; set; }
-        //[ForeignKey("ApplicationUserId")]
-        //[ValidateNever]
-        //public ApplicationUser ApplicationUser { get; set; }
+        [ForeignKey("ApplicationUserId")]
+        [ValidateNever]
+        public ApplicationUser ApplicationUser { get; set; }
+        //public IEnumerable<Comment> Comments { get; set; }
 
+        //Not Mapped to the database
         [NotMapped]
         public double Price { get; set; }
     }

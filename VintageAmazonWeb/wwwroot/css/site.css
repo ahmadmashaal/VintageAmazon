@@ -20,3 +20,33 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.starFade{
+    background-image: url('/images/StarFade.png');
+    min-width: 30px;
+    min-height: 30px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.starFadeN {
+    background-image: url('/images/StarFade.png');
+    min-width: 30px;
+    min-height: 30px;
+    display: inline-block;
+}
+
+.starGlow {
+    background-image: url('/images/StarGlow.png');
+    min-width: 30px;
+    min-height: 30px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.starGlowN {
+    background-image: url('/images/StarFade.png');
+    min-width: 30px;
+    min-height: 30px;
+    display: inline-block;
+}

@@ -1,12 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using VintageAmazon.DataAccess;
 using VintageAmazon.DataAccess.Repository;
 using VintageAmazon.DataAccess.Repository.IRepository;
 using VintageAmazon.Models;
+using VintageAmazon.Utility;
 
 namespace VintageAmazonWeb.Areas.Admin.Controllers;
 [Area("Admin")]
+[Authorize(Roles = SD.Role_Admin)]
 
 public class CoverTypeController : Controller
     {

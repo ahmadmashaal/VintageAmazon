@@ -62,9 +62,15 @@
                     @*Checks for validation, if it fails an error pops up explaining why by using asp-validation-for*@
                     <span asp-validation-for="Product.Price100" class="text-danger"></span>
                 </div>
-                <div class="mb-3">
+                <div class="mb-3 col-6">
                     <label asp-for="Product.ImageUrl"></label>
                     <input type="file" id="uploadBox" name="file" class="form-control" />
+                </div>
+                <div class="mb-3 col-6">
+                    <label asp-for="Product.Quantity"></label>
+                    <input asp-for="Product.Quantity" class="form-control" />
+                    @*Checks for validation, if it fails an error pops up explaining why by using asp-validation-for*@
+                    <span asp-validation-for="Product.Quantity" class="text-danger"></span>
                 </div>
                 <div class="mb-3 col-6">
                     <label asp-for="Product.CategoryId"></label>
@@ -112,7 +118,7 @@
     <script>
             tinymce.init({
                 selector: 'textarea',
-                plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
+                plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
                 toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
                 tinycomments_mode: 'embedded',
                 tinycomments_author: 'Author name',
